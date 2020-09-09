@@ -1,0 +1,58 @@
+*{
+  margin: 0%;
+  padding: 0%;
+  font-family: 'Alegreya Sans SC';
+}
+body{
+    background-image:url(hostelbg1.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    text-align: center;
+}
+.bar{
+    height: 60px;
+    width: 100%;
+    background-color: aqua;
+    opacity: 0.7;
+}
+.bar img{
+    position: absolute;
+    top: 8px;
+    left: 10px ;
+    height: 50px;
+    width: 50px;
+}
+.bar h1{
+    text-align: center;
+    padding-top:10px;
+}
+.bar p{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.txt
+{
+    padding: 20px 0 10px;
+}
+.register{
+    position: relative;
+    width:60%;
+    margin:20px 0 2px;
+    padding-left: 30px;
+    opacity: 0.85;
+}
+.f{
+    padding: 5px 0 5px;
+}
+.register button{
+    position: absolute;
+    left: 20px;
+    margin-top: 5px;
+}
+h3{
+    position: absolute;
+    bottom: 20px;
+    right: 35%;
+    color: beige;
+}
