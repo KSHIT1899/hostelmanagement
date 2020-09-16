@@ -16,30 +16,17 @@
 <html>
 <head>
 	<title>Room</title>
-	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <link rel="stylesheet" type="text/css" href="apply.css">
+    <link href='https://fonts.googleapis.com/css?family=Alegreya Sans SC' rel='stylesheet'>
 </head>
 <body>
 
-<div class="header">
-	<h2>Select/Change Room</h2>
+<div class="letters">
+	<h2>| Select or Change Room |</h2>
 </div>
-<div class="content">
-  	<!-- notification message -->
-  	<?php if (isset($_SESSION['success'])) : ?>
-      <div class="error success" >
-      	<h3>
-          <?php 
-          	echo $_SESSION['success']; 
-          	unset($_SESSION['success']);
-          ?>
-      	</h3>
-      </div>
-  	<?php endif ?>
 
-    <!-- logged in user information -->
-    <?php  if (isset($_SESSION['ROLLNO'])) : ?>
-      <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-    <?php endif ?>
+
+   
     <?php
       $host = 'localhost';
       $dbname = 'studentregister';
@@ -57,44 +44,52 @@
       } catch (PDOException $e) {
           die("Could not connect to the database $dbname :" . $e->getMessage());
       }
-      ?>
-      <p>Available rooms:-</p>
-      <?php while ($row = $q->fetch()): ?>
-          <tr>
-              <td><?php echo htmlspecialchars($row['ROOMNO']) ?></td>
-          </tr>
-          <br/>
-      <?php endwhile; ?>
+      ?>  
+      <!-- <p style="color:black; font-size: 20px; margin-left:-40px;">Available rooms:-</p> -->
+      
       <form method="post" action="apply.php">
         <?php include('errors.php'); ?>
+       
+      
         
         <div class="input-group">
           <input type="hidden" name="ROLLNO" value="<?php echo $un ?>">
-        </div>
-        <p>Select one option from below:-</p>
-        <div class="input-group">
-          <input type="radio" id="select" name="REQ" value="S">
-          <label for="mselect">New Resident</label><br>
-          <input type="radio" id="change" name="REQ" value="C">
-          <label for="change">Change my current room</label><br>
+        </div> 
+        <p  class="choose" >Select one option from below:-</p>
+        <input  type="radio" name="REQ" checked><span style="color: white; font-size: 20px; margin-left:-40px;"> New Resident</span>
+    </label>
+    <label class="radio-inline">
+      <input   type="radio" name="REQ"><span style="color: white;
+  font-size: 20px; margin-left:-40px;">Change my current room </span>
+    </label>
+   
         </div>
         <p>Current Room(Only for changing room)</p>
         <div class="input-group">
           <input type="text" name="CURRENT">
         </div>
+        <details style="color:white";>
+        <summary>List of Available Rooms</summary>
+        <?php while ($row = $q->fetch()): ?>
+            
+              <?php echo htmlspecialchars($row['ROOMNO']) ?>
+            <br/>
+        <?php endwhile; ?> 
+      </details>
         <p>Enter a room from the above list to choose.</p>
         <div class="input-group">
           <input type="text" name="ROOMNO" >
         </div>
 
         <div class="input-group">
-          <button type="submit" class="btn" name="room_application">Submit</button>
+          <button type="submit" class="btn" name="room_application">Apply</button>
         </div>
 
       </form> 
     </div>  
   </body>
 </html>
+       
 
 
 

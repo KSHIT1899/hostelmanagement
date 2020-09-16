@@ -22,7 +22,7 @@
              <li><a href="http://localhost/hostel_manage/facilities.php">Hostel Factilites</a></li>
              <li><a href="http://localhost/hostel_manage/register.php">Sign up</a></li>
              <li><a href="http://localhost/hostel_manage/login.php">Login</a></li>
-             <li><a href="http://localhost/hostel_manage/wardenlogin.php">Warden Panel</a></li>
+             <li><a href="http://localhost/hostel_manage/wlogin.php">Warden Panel</a></li>
          </ul>
     </nav>
     

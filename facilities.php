@@ -9,6 +9,10 @@
     <link href='https://fonts.googleapis.com/css?family=Alegreya Sans SC' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Alegreya Sans' rel='stylesheet'>
 
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
     
@@ -29,7 +33,7 @@
     </ul>
 <div>
         
-    <img src="https://lh3.googleusercontent.com/proxy/xSzShK-cqq5pN4WM89QWYGy3QwJ-PoAO8LWhCAJQ9lp1oMNqLx14Ihle94KDAp0s4I91WKBzFjGbpTMQ-P4rb1Txn0oHxdas" style="height:29%; width:45%; margin:12px;  box-shadow:10px 10px 5px #aaaaaa;">
+    <img src="bedroom.jpg" style="height:29%; width:45%; margin:12px;  box-shadow:10px 10px 5px #aaaaaa;">
     <img src="https://www.akgec-mca.ac.in/wp-content/uploads/2020/06/Hostel-Mess.jpg" style="height:29%; width:45%; float:right ;margin-top:60px; margin:12px; box-shadow:10px 10px 5px #aaaaaa;">
     <br><br>
     <div class="amm">
@@ -67,6 +71,18 @@
         <li>Mineral water provided to all the students</li>
     </ul>
     </div>
+    <div class="skill-logo">
+                <div><i class="fa fa-cutlery"></i></div>
+                <div><i class="fa fa-rupee" ></i></div>
+                <div><i class="fa fa-user-secret"></i></div>
+                <div><i class="fa fa-car"></i></div>
+            </div>
+            <div class="skill-logo1">
+                <p>Canteen</p>
+                <p>Low price</p> 
+                <p>Secure Zone</p>
+                <p>Pick-up</p>
+            </div>
     <footer>
     <blockquote>
     I was staying in a hostel for the first time, but the caring wardens, homely food and the friendly atmosphere made me feel so much at home.

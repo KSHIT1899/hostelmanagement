@@ -11,7 +11,7 @@
     <div class="bar">
         <img src="https://www.akgec.ac.in/wp-content/themes/twentysixteen/img/AKGEC_1_0.png" alt="logo">
         <h1>AKGEC,Hostel Management System</h1>
-        
+        <p>Warden's Login</p>
     </div>
   <div class="header">
   	<h2>REGISTER HERE</h2>
@@ -39,17 +39,7 @@
         <input type="text" name="PARENTCONTACT" placeholder="paretns phone">
       </div>
       <div class="input-group">
-      <input  list="branch" name="BRANCH" placeholder="students branch">
-      <datalist id="branch">
-    <option value="CSE">
-    <option value="CS">
-    <option value="CSIT">
-    <option value="IT">
-    <option value="ECE">
-    <option value="ME">
-    <option value="CIVIL">
-  </datalist>
-        
+        <input type="text" name="BRANCH" placeholder="students branch">
       </div>
       
       <div class="input-group">

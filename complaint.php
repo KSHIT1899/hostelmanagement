@@ -16,33 +16,15 @@
 <html>
 <head>
 	<title>Complaint</title>
-	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+  <link rel="stylesheet" type="text/css" href="complaint.css">
+  <link href='https://fonts.googleapis.com/css?family=Alegreya Sans SC' rel='stylesheet'>
 </head>
 <body>
-
-<div class="header">
-	<h2>File a Complaint here:</h2>
-</div>
-<div class="content">
-  	<!-- notification message -->
-  	<?php if (isset($_SESSION['success'])) : ?>
-      <div class="error success" >
-      	<h3>
-          <?php 
-          	echo $_SESSION['success']; 
-          	unset($_SESSION['success']);
-          ?>
-      	</h3>	
-      </div>
-  	<?php endif ?>
-
-    <?php  if (isset($_SESSION['ROLLNO'])) : ?>
-      <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-    <?php endif ?>
+    <span class="letters">| File  a  Complaint |</span>
 
       <form method="post" action="complaint.php">
         <?php include('errors.php'); ?>
-
+       
         <div class="input-group">
           <input type="text" name="STUDENT_NAME"  placeholder="Students Name">
         </div>
@@ -51,26 +33,27 @@
           <input type="text" name="ROLLNUM" placeholder="Students Rollno">
         </div>
 
+        <div class ="input-group">
+          <input type="text" name="ROOMNM" placeholder="Students Room mumber">
+        </div>
+
         <div class="input-group">
-          <input type="text" name="PHONE" placeholder="students phone">
+          <input type="text" name="PHONE" placeholder="Students phone">
+        </div> 
+
+        <div class="input-group">
+          <input type="date" placeholder="date" name="DATE">
         </div>
 
-        <div>
-          <textarea name="COMPLAINT"  placeholder="write your issues" rows="20" cols="100"></textarea>
+        <div class="inp">
+          <textarea name="COMPLAINT"  placeholder="write your issues" rows="8" cols="60"></textarea>
         </div>
-        <br><br>
-
-        <label>Date of Complain:</label>
-        <input type="date"  name="DATE">
-        
-        <input type="submit" name="complaint_file">
-
-        <!-- <div class="input-group">
-          <button type="submit" class="btn" name="complaint_file">Submit</button>
-        </div> -->
+ 
+        <div class="input-group">
+          <button type="submit" class="btn" name="complaint_file">Send to Warden</button>
+        </div>
 
       </form> 
-    </div>  
   </body>
 </html>
 
