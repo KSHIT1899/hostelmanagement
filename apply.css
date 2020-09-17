@@ -50,9 +50,23 @@ form, .content {
   border: 1px solid gray;
   background-color: rgb(255, 247, 226);
 }
+.input-group select {
+  height: 4vh;
+  width: 40%;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background-color: rgb(255, 247, 226);
+}
+#stl{
+  background-color: rgb(255, 247, 226);
+}
+
 .input-group input:hover {
   border: 2px solid rgb(247, 130, 52);
 }
+
 .btn {
   padding: 10px;
   font-size: 15px;
@@ -83,3 +97,4 @@ input[type="radio"] {
 font-size: 20px;
 margin-bottom: 20px;
 }
+

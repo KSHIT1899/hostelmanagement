@@ -68,17 +68,16 @@
         <div class="input-group">
           <input type="text" name="CURRENT">
         </div>
-        <details style="color:white";>
-        <summary>List of Available Rooms</summary>
-        <?php while ($row = $q->fetch()): ?>
-            
-              <?php echo htmlspecialchars($row['ROOMNO']) ?>
-            <br/>
-        <?php endwhile; ?> 
-      </details>
         <p>Enter a room from the above list to choose.</p>
         <div class="input-group">
-          <input type="text" name="ROOMNO" >
+          <!-- <input  name="ROOMNO" > -->
+          <select id="stl" type="list" name="ROOMNO">
+          <?php 
+          while ($row = $q->fetch()){
+            echo "<option>".$row['ROOMNO']."</option>";
+          }
+          ?>
+          </select> 
         </div>
 
         <div class="input-group">

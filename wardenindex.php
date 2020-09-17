@@ -273,7 +273,7 @@
                    <tr>    
                       <td><b>Roll No:&nbsp;&nbsp;&nbsp;</b></td>
                        <td>
-                        <input type="text" name="rollno" value="<?php echo $row['ROLLNO'];?>">
+                        <input type="text" name="rollno" value="<?php echo $row['ROLLNO'];?>" disabled>
                        </td>
                     </tr>
                     <tr>

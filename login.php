@@ -11,7 +11,8 @@
 <div class="bar">
         <img src="https://www.akgec.ac.in/wp-content/themes/twentysixteen/img/AKGEC_1_0.png" alt="logo">
         <h1>AKGEC,Hostel Management System</h1>
-        <p>Warden's Login</p>
+        
+		<p><a href="wlogin.php">Warden's Login</a></p>
     </div>
   <div class="header">
   	<h2>Login</h2>
