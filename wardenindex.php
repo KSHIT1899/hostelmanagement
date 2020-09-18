@@ -1,3 +1,4 @@
+
 <?php
  session_start();
  if(!isset($_SESSION['username']))
@@ -96,6 +97,7 @@
       background:rgba(0,0,0,0.5)	;color:#f6f6f6;
     }*/
   </style>
+
 </head>
 <body>
 <div class="bar">
@@ -104,6 +106,7 @@
         <p> <a href="logout.php">Logout</a></p>
     </div>
     <h1 class="txx">Welcome, <?php echo $_SESSION['username'];?></h1>
+
    <!--buttons for selection-->
     <div id="select">
       <form action="" method="post">
@@ -111,6 +114,7 @@
         <button class="btn-lg btn-info" type="submit" name="edit_student">Edit Details</button>
         <button class="btn-lg btn-info" type="submit" name="complaints">Complaints</button>
         <button class="btn-lg btn-info" type="submit" name="see_details">See Details</button>
+        <button class="btn-lg btn-info" type="submit" name="vacant_details">Just Vacant Rooms</button>
       </form>
     </div>
     <!-- intoductory div-->
@@ -123,7 +127,7 @@
         Electrical and Electronics Engineering, Mechanical Engineering and Civil Engineering. The college also offers MTech in Automation and Robotics, 
         Electronics & Communication Engineering, Computer Science, Electrical and Electronics Engineering and Mechanical Engineering. The college is accredited by NAAC.
         </p>
-        <!-- <script src="ani.js"></script> -->
+         <!--<script src="ani.js"></script>-->
         </div>
     </div> 
     <!-- details will be displayed here-->
@@ -150,7 +154,7 @@
          }
          if(isset($_POST['search_by_roll']))
          {
-            
+
              $query= "SELECT * FROM users WHERE ROLLNO= '$_POST[roll_no]'";
              $results = mysqli_query($db, $query);
              if(mysqli_num_rows($results)==0)
@@ -273,7 +277,8 @@
                    <tr>    
                       <td><b>Roll No:&nbsp;&nbsp;&nbsp;</b></td>
                        <td>
-                        <input type="text" name="rollno" value="<?php echo $row['ROLLNO'];?>" disabled>
+                        <input type="text"  value="<?php echo $row['ROLLNO'];?>" disabled>
+                        <input style="display:none;"  type="text" name="rollno" value="<?php echo $row['ROLLNO'];?>">
                        </td>
                     </tr>
                     <tr>
@@ -422,7 +427,54 @@
         }
         ?>
         </div>
+        <!-- vacant room details-->
+        <div class="complaint">
+         <?php
+         if(isset($_POST['vacant_details']))
+         {
+          $query= "SELECT * FROM vacant";
+          $query_run= mysqli_query($db,$query);
+           {
+             ?>
+             <script>
+                 document.getElementById("one").classList.add('hide');
+                 document.getElementById("details").classList.remove('hide');
+             </script>
+             <center>
+             <table class="table tb table-bordered" align="center" style="text-align:center;background:rgba(0,0,0,0.5)	;color:#f6f6f6;">
+               <t>
+                <th>S.No.</th>
+                <th>Room Number</th>
+                <th>Student's Name</th>
+                <th> Roll no.</th>
+                <th>Date</th>
+                <th>Reason</th>
+                <th>Update status</th>
+                <!--<th style="padding: 10px 10px 10px 10px ;">   </th>-->
+               </t>
+               <?php
+                 while($rows = mysqli_fetch_assoc($query_run))
+                 {
+                  ?>
+                  <tr>
+                   <td><?php echo $rows['SN']?></td>
+                   <td><?php echo $rows['ROOMNUMBER']?></td>
+                   <td><?php echo $rows['NAMESTUDENT']?></td>
+                   <td><?php echo $rows['ROLLNUMBER']?></td>
+                   <td><?php echo $rows['DTE']?></td>
+                   <td><?php echo $rows['REASON']?></td>
+                   <td><a style="color:#fff;" href="vacant_room.php?n=<?php echo $rows['SN']?>">Update</a></td>
+                  </tr>
+                  <?php
+                 }
+                 ?>
+             </table>
+             </center>
+             <?php
+           }
+         }
+         ?>
+        </div>
     </div>
 </body>
-</html> 
 </html>

@@ -150,7 +150,7 @@
 
         {
 
-            echo "Hello world" ;
+            echo "" ;
 
         }
 
@@ -175,7 +175,7 @@ function myfncs()
 
 {
 
-    echo "Hello world" ;
+    echo "" ;
 
 }
 
@@ -201,7 +201,7 @@ function myfncm()
 
 {
 
-    echo "Hello world" ;
+    echo "" ;
 
 }
 

@@ -25,31 +25,31 @@ if (isset($_POST['student_user'])) {
    array_push($errors, "Please fill all the fields"); 
   }
   
-  // $password-1 = 'user-input-pass';
+ 
 
-  // Validate password strength
-  // $uppercase = preg_match('@[A-Z]@', $password_1);
-  // $lowercase = preg_match('@[a-z]@', $password_1);
-  // $number    = preg_match('@[0-9]@', $password_1);
-  // $specialChars = preg_match('@[^\w]@', $password_1);
+  //Validate password strength
+  $uppercase = preg_match('@[A-Z]@', $password_1);
+  $lowercase = preg_match('@[a-z]@', $password_1);
+  $number    = preg_match('@[0-9]@', $password_1);
+  $specialChars = preg_match('@[^\w]@', $password_1);
 
-  // if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password_1) < 8) {
-  //     //echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
-  //     array_push($errors, "Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character."); 
-  // }
-  // else{
-  //     echo 'Strong password.';
-  // }
+  if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password_1) < 8) {
+      //echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+      array_push($errors, "Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character."); 
+  }
+  else{
+      echo 'Strong password.';
+  }
  
   if ($password_1 != $password_2) {
 	array_push($errors, "The two passwords do not match");
   }
-  // if ( !preg_match ("/^[a-zA-Z\s]+$/",$NAME)) {
-  //   array_push($errors, "Name must only contain letters and spaces!");
-  // } 
-  //  if (!is_numeric($ROLLNO)) {
-  //   array_push($errors, "Rollno. must include only numeric values");
-  //  }
+  if ( !preg_match ("/^[a-zA-Z\s]+$/",$NAME)) {
+    array_push($errors, "Name must only contain letters and spaces!");
+  } 
+   if (!is_numeric($ROLLNO)) {
+    array_push($errors, "Rollno. must include only numeric values");
+   }
 
   $user_check_query = "SELECT * FROM users WHERE ROLLNO='$ROLLNO' OR EMAIL='$EMAIL' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
@@ -73,11 +73,11 @@ if (isset($_POST['student_user'])) {
   	header('location: login.php');
   }
 }
-// $ROOMNO="";
+
 if (isset($_POST['login_user'])) {
   $ROLLNO = mysqli_real_escape_string($db, $_POST['ROLLNO']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
-  // $ROOMNO = mysqli_real_escape_string($db, $_POST['ROOMNO']);
+ 
 
   if (empty($ROLLNO)) {
   	array_push($errors, "Rollno is required");
@@ -86,12 +86,7 @@ if (isset($_POST['login_user'])) {
   	array_push($errors, "Password is required");
   }
 
-  // if (empty($ROOMNO)) {
-  // 	array_push($errors, "You must choose the roomno field from dropdown menu");
-  // }
-  // $query = "UPDATE users (ROOMNO) 
-  //  VALUES('$ROOMNO')";
-  //  mysqli_query($db, $query);
+ 
   if (count($errors) == 0) {
   	$password = hash('sha256',$password_1);
   	$query = "SELECT * FROM users WHERE ROLLNO ='$ROLLNO' AND password_1='$password'";
@@ -131,6 +126,7 @@ if (isset($_POST['room_application'])) {
             ROOMNO = '$RN'";
       mysqli_query($db, $query3);
     }
+    
     else
     {
       $query1 = "UPDATE rooms
@@ -152,11 +148,13 @@ if (isset($_POST['room_application'])) {
 if (isset($_POST['complaint_file'])) {
   $NME = mysqli_real_escape_string($db, $_POST['STUDENT_NAME']);
   $ROOLNUM = mysqli_real_escape_string($db, $_POST['ROLLNUM']);
+  $ROOMNm = mysqli_real_escape_string($db, $_POST['ROOMNM']);
   $COM= mysqli_real_escape_string($db, $_POST['COMPLAINT']);
   $PHN = mysqli_real_escape_string($db, $_POST['PHONE']);
   $DTE=mysqli_real_escape_string($db, $_POST['DATE']);
-  $query = "INSERT INTO complaints (STUDENT_NAME, ROLLNUM, COMPLAINT, PHONE, DATE) 
-  VALUES('$NME', '$ROOLNUM', '$COM', '$PHN','$DTE')";
+  
+  $query = "INSERT INTO complaints (STUDENT_NAME, ROLLNUM, ROOMNM, COMPLAINT, PHONE, DATE) 
+  VALUES('$NME', '$ROOLNUM','$ROOMNm', '$COM', '$PHN','$DTE')";
   mysqli_query($db, $query);
   header('location: index.php');
 }
@@ -184,38 +182,7 @@ if (isset($_POST['vacant_room'])) {
   mysqli_query($db, $query2);
   header('location: index.php');
 }
-if (isset($_POST['warden_user'])) {
-  $username = mysqli_real_escape_string($db, $_POST['username']);
-  $password = mysqli_real_escape_string($db, $_POST['password']);
-  // $ROOMNO = mysqli_real_escape_string($db, $_POST['ROOMNO']);
 
-  if (empty($username)) {
-  	array_push($errors, "username is required");
-  }
-  if (empty($password )) {
-  	array_push($errors, "Password is required");
-  }
-
-  // if (empty($ROOMNO)) {
-  // 	array_push($errors, "You must choose the roomno field from dropdown menu");
-  // }
-  // $query = "UPDATE users (ROOMNO) 
-  //  VALUES('$ROOMNO')";
-  //  mysqli_query($db, $query);
-  if (count($errors) == 0) {
-  	// $password_s = hash('sha256',$password);
-  	// $query = "SELECT * FROM users WHERE ROLLNO ='$ROLLNO' AND password_1='$password'";
-  	// $results = mysqli_query($db, $query);
-  	// if (mysqli_num_rows($results) >= 1) {
-
-  	  // $_SESSION['username'] = $ROLLNO;
-      // $_SESSION['success'] = "You are now logged in";
-  	  header('location: wardenindex.php');
-    }
-    else {
-  		array_push($errors, "Wrong Rollno/password combination");
-  	}
-  }
 
 
 

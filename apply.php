@@ -6,11 +6,7 @@
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
   }
-  if (isset($_GET['logout'])) {
-  	session_destroy();
-  	unset($_SESSION['ROLLNO']);
-  	header("location: login.php");
-  }
+ 
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,12 +52,15 @@
           <input type="hidden" name="ROLLNO" value="<?php echo $un ?>">
         </div> 
         <p  class="choose" >Select one option from below:-</p>
-        <input  type="radio" name="REQ" checked><span style="color: white; font-size: 20px; margin-left:-40px;"> New Resident</span>
-    </label>
-    <label class="radio-inline">
-      <input   type="radio" name="REQ"><span style="color: white;
-  font-size: 20px; margin-left:-40px;">Change my current room </span>
-    </label>
+        <input  type="radio" name="REQ" id ="nr" value = "s"checked>
+        <label for = "nr">
+          <span style="color: white; font-size: 20px; margin-left:-40px;"> New Resident</span>
+        </label>
+    
+      <input id="cr" value="C" type="radio" name="REQ">
+      <label for="cr" class="radio-inline">
+        <span style="color: white;font-size: 20px; margin-left:-40px;">Change my current room </span>
+      </label>
    
         </div>
         <p>Current Room(Only for changing room)</p>
@@ -81,7 +80,7 @@
         </div>
 
         <div class="input-group">
-          <button type="submit" class="btn" name="room_application">Apply</button>
+          <button type="submit" class="btn" name="room_application">Send application to warden</button>
         </div>
 
       </form> 
