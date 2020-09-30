@@ -6,7 +6,8 @@
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
   }
- 
+  $db = mysqli_connect('localhost', 'root',''  ,'studentregister');
+  $rn=$_SESSION['ROLLNO'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,6 +21,11 @@
 	<h2>| Vacant your room |</h2>
 </div>
 
+       <?php
+       $query="SELECT * FROM users WHERE ROLLNO='$rn'";
+       $query_run=mysqli_query($db,$query);
+       $row = mysqli_fetch_assoc($query_run);
+       ?>
 
     
 
@@ -27,15 +33,18 @@
         <?php include('errors.php'); ?>
 
         <div class="input-group">
-          <input type="text" name="NAMESTUDENT"  placeholder="Students Name">
+          <input type="text"  value="<?php echo $row['NAME'];?>" disabled>
+          <input type="text" style="display:none;" name="NAMESTUDENT"  placeholder="Students Name" value="<?php echo $row['NAME'];?>" >
         </div>
 
         <div class="input-group">
-          <input type="text" name="ROLLNUMBER" placeholder="Students Rollno">
+          <input type="text" value="<?php echo $row['ROLLNO'];?>" disabled>
+          <input type="text" style="display:none;" name="ROLLNUMBER" value="<?php echo $row['ROLLNO'];?>"> 
         </div>
 
         <div class="input-group">
-          <input type="text" name="ROOMNUMBER" placeholder="students Room number">
+          <input type="text" value="<?php echo $row['ROOMNO'];?>" disabled>
+          <input type="text" name="ROOMNUMBER" style="display:none;" value="<?php echo $row['ROOMNO'];?>">
         </div>
          <div class="input-group">
         <input type="date"  name="DTE">
@@ -58,7 +67,3 @@
     </div>  
   </body>
 </html>
-
-
-
-

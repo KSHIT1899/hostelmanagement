@@ -6,7 +6,8 @@
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
   }
-  
+ $db = mysqli_connect('localhost', 'root',''  ,'studentregister');
+ $rn=$_SESSION['ROLLNO'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,24 +18,32 @@
 </head>
 <body>
     <span class="letters">| File  a  Complaint |</span>
-
+     <?php
+       $query="SELECT * FROM users WHERE ROLLNO='$rn'";
+       $query_run=mysqli_query($db,$query);
+       $row = mysqli_fetch_assoc($query_run);
+       ?>
       <form method="post" action="complaint.php">
         <?php include('errors.php'); ?>
        
         <div class="input-group">
-          <input type="text" name="STUDENT_NAME"  placeholder="Students Name">
+          <input type="text"  value="<?php echo $row['NAME'];?>" disabled>
+          <input type="text" style="display:none;" name="STUDENT_NAME"  placeholder="Students Name" value="<?php echo $row['NAME'];?>" >
         </div>
 
         <div class="input-group">
-          <input type="text" name="ROLLNUM" placeholder="Students Rollno">
+          <input type="text" value="<?php echo $row['ROLLNO'];?>" disabled>
+          <input type="text" style="display:none;" name="ROLLNUM" value="<?php echo $row['ROLLNO'];?>"> 
         </div>
 
         <div class ="input-group">
-          <input type="text" name="ROOMNM" placeholder="Students Room mumber">
+          <input type="text" value="<?php echo $row['ROOMNO'];?>" disabled>
+          <input type="text" name="ROOMNM" style="display:none;" value="<?php echo $row['ROOMNO'];?>">
         </div>
 
         <div class="input-group">
-          <input type="text" name="PHONE" placeholder="Students phone">
+          <input type="text"  value="<?php echo $row['CONTACT'];?>" disabled>
+          <input type="text" style="display:none;" name="PHONE"  placeholder="Students Name" value="<?php echo $row['CONTACT'];?>" >
         </div> 
 
         <div class="input-group">
@@ -52,7 +61,3 @@
       </form> 
   </body>
 </html>
-
-
-
-
